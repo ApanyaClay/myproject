@@ -1,0 +1,15 @@
+const path = require('path');
+
+module.exports = {
+  // Memberi tahu di mana file konfigurasi koneksi database berada
+  'config': path.resolve('src', 'databases', 'config', 'config.json'),
+
+  // Memberi tahu di mana folder yang berisi semua model berada
+  'models-path': path.resolve('src', 'databases', 'models'),
+
+  // Memberi tahu di mana folder untuk menyimpan file seeder berada
+  'seeders-path': path.resolve('src', 'databases', 'seeders'),
+  
+  // Memberi tahu di mana folder untuk menyimpan file migration berada
+  'migrations-path': path.resolve('src', 'databases', 'migrations'),
+};
