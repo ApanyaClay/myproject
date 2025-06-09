@@ -1,0 +1,40 @@
+<div class="container mt-3"> <%# Cek dan tampilkan pesan SUKSES %>
+    <% if (locals.messages && locals.messages.success && locals.messages.success.length > 0) { %>
+        <% locals.messages.success.forEach(function(message) { %>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% }) %>
+    <% } %>
+
+    <%# Cek dan tampilkan pesan ERROR %>
+    <% if (locals.messages && locals.messages.error && locals.messages.error.length > 0) { %>
+        <% locals.messages.error.forEach(function(message) { %>
+            <%# Untuk error, kita bisa gunakan kelas 'alert-danger' %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+
+<!-- Core JS -->
+
+    <script src="assets/vendor/libs/jquery/jquery.js"></script>
+
+    <script src="assets/vendor/libs/popper/popper.js"></script>
+    <script src="assets/vendor/js/bootstrap.js"></script>
+
+    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+
+    <script src="assets/js/main.js"></script>

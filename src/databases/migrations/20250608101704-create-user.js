@@ -39,7 +39,7 @@ module.exports = {
         unique: true // Nomor telepon harus unik
       },
       status: {
-        type: Sequelize.ENUM('active', 'inactive', 'pending', 'banned'),
+        type: Sequelize.ENUM('active', 'inactive', 'pending', 'suspended', 'banned'),
         defaultValue: 'pending', // Nilai default saat user baru dibuat
         allowNull: false
       },
