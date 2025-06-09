@@ -16,7 +16,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, {
     ...config, // Salin semua konfigurasi yang ada (host, dialect, dll.)
     define: {
-      underscored: true, // AKTIFKAN SNAKE_CASE SECARA GLOBAL
+      // underscored: true, // AKTIFKAN SNAKE_CASE SECARA GLOBAL
       // Anda juga bisa menambahkan freezeTableName di sini jika perlu
       // freezeTableName: true 
     }

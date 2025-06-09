@@ -1,0 +1,66 @@
+<% if (locals.messages && locals.messages.success &&
+locals.messages.success.length > 0) { %> <%
+locals.messages.success.forEach(function(message) { %>
+<div
+  class="bs-toast toast toast-placement-ex m-2 bg-success bottom-0 end-0 fade"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-delay="2000"
+  data-bs-autohide="true"
+>
+  <div class="toast-header">
+    <i class="icon-base bx bx-bell me-2"></i>
+    <div class="me-auto fw-medium">Success</div>
+    <small>1 second ago</small>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="toast-body">
+    <%= message %>
+  </div>
+</div>
+<% }) %> <% } %>
+
+<% if (locals.messages && locals.messages.error &&
+locals.messages.error.length > 0) { %> <%
+locals.messages.error.forEach(function(message) { %>
+<div
+  class="bs-toast toast toast-placement-ex m-2 bg-danger bottom-0 end-0 fade"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-delay="2000"
+  data-bs-autohide="true"
+>
+  <div class="toast-header">
+    <i class="icon-base bx bx-bell me-2"></i>
+    <div class="me-auto fw-medium">Error</div>
+    <small>1 second ago</small>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="toast-body">
+    <%= message %>
+  </div>
+</div>
+<% }) %> <% } %>
+
+<!-- Page JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toastElements = document.querySelectorAll('.toast');
+    toastElements.forEach(function (toastEl) {
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    });
+  });
+</script>

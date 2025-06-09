@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       status: {
-        type: DataTypes.ENUM('active', 'inactive', 'pending', 'banned'),
+        type: DataTypes.ENUM('active', 'inactive', 'pending', 'suspended', 'banned'),
         allowNull: false,
         defaultValue: 'pending', // Nilai default saat user baru dibuat
       },
