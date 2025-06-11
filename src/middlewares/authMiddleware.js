@@ -72,6 +72,7 @@ exports.restoreSession = async function (req, res, next) {
   }
 
   const token = req.cookies.refreshToken;
+  // res.clearCookie('refreshToken');
   if (!token) return next();
   try {
     const payload = await verifyRefreshToken(token);
@@ -90,16 +91,19 @@ exports.restoreSession = async function (req, res, next) {
       return next();
     }
   } catch (error) {
-    console.log('Refresh token tidak valid atau sudah kadaluarsa');
-    // If there's an error, proceed to the next middleware
-    res.redirect('/login');
-    return next();
+    if (error.name === 'TokenExpiredError') {
+      console.log('Refresh token telah kadaluarsa.');
+    } else {
+      console.log('Refresh token tidak valid:', error.message);
+    }
+    res.clearCookie('refreshToken');
+    
+    return res.redirect('/login');
   }
 };
 
 exports.redirectIfLoggedIn = (req, res, next) => {
   if (req.session?.user?.loggedIn) {
-    console.log('User sudah login, redirect ke halaman utama.');
     return res.redirect('/'); // Ganti '/' ke halaman tujuan jika perlu
   }
   next();
@@ -110,7 +114,6 @@ exports.requireLogin = (req, res, next) => {
     return next(); // User sudah login, lanjut ke route berikutnya
   }
 
-  console.log('Akses ditolak: User belum login');
   req.flash('error', 'Silakan login terlebih dahulu.');
   return res.redirect('/login');
 };

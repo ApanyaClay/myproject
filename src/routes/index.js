@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authRoter = require('./auth');
-const { restoreSession, requireLogin } = require('../middlewares/authMiddleware');
+const { requireLogin } = require('../middlewares/authMiddleware');
 
 router.get('/dashboard', async (req, res, next) => {
   res.render('dashboard');
